@@ -1,0 +1,164 @@
+-- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
+--
+-- Host: localhost    Database: myworkspace
+-- ------------------------------------------------------
+-- Server version	5.6.17
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `babynames`
+--
+
+DROP TABLE IF EXISTS `babynames`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `babynames` (
+  `name` varchar(100) DEFAULT NULL,
+  `birth_year` varchar(100) DEFAULT NULL,
+  `ranking` varchar(100) DEFAULT NULL,
+  `gender` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `babynames`
+--
+
+LOCK TABLES `babynames` WRITE;
+/*!40000 ALTER TABLE `babynames` DISABLE KEYS */;
+INSERT INTO `babynames` VALUES ('SOPHIA','2013','1','FEMALE'),('EMMA','2013','2','FEMALE'),('OLIVIA','2013','3','FEMALE'),('ISABELLA','2013','4','FEMALE'),('AVA','2013','5','FEMALE'),('NOAH','2013','1','MALE'),('LIAM','2013','2','MALE'),('JACOB','2013','3','MALE'),('MASON','2013','4','MALE'),('WILLIAM','2013','5','MALE'),('SOPHIA','2012','1','FEMALE'),('EMMA','2012','2','FEMALE'),('ISABELLA','2012','3','FEMALE'),('OLIVIA','2012','4','FEMALE'),('AVA','2012','5','FEMALE'),('JACOB','2012','1','MALE'),('MASON','2012','2','MALE'),('ETHAN','2012','3','MALE'),('NOAH','2012','4','MALE'),('WILLIAM','2012','5','MALE'),('SOPHIA','2011','1','FEMALE'),('ISABELLA','2011','2','FEMALE'),('EMMA','2011','3','FEMALE'),('OLIVIA','2011','4','FEMALE'),('AVA','2011','5','FEMALE'),('JACOB','2011','1','MALE'),('MASON','2011','2','MALE'),('WILLIAM','2011','3','MALE'),('JAYDEN','2011','4','MALE'),('NOAH','2011','5','MALE'),('ISABELLA','2010','1','FEMALE'),('SOPHIA','2010','2','FEMALE'),('EMMA','2010','3','FEMALE'),('OLIVIA','2010','4','FEMALE'),('AVA','2010','5','FEMALE'),('JACOB','2010','1','MALE'),('EHTAN','2010','2','MALE'),('MICHAEL','2010','3','MALE'),('JAYDEN','2010','4','MALE'),('WILLIAM','2010','5','MALE'),('ISABELLA','2009','1','FEMALE'),('EMMA','2009','2','FEMALE'),('OLIVIA','2009','3','FEMALE'),('SOPHIA','2009','4','FEMALE'),('AVA','2009','5','FEMALE'),('JACOB','2009','1','MALE'),('ETHAN','2009','2','MALE'),('MICHAEL','2009','3','MALE'),('ALEXANDER','2009','4','MALE'),('WILLIAM','2009','5','MALE'),('EMMA','2008','1','FEMALE'),('ISABELLA','2008','2','FEMALE'),('EMILY','2008','3','FEMALE'),('OLIVIA','2008','4','FEMALE'),('AVA','2008','5','FEMALE'),('JACOB','2008','1','MALE'),('MICHAEL','2008','2','MALE'),('ETHAN','2008','3','MALE'),('JOSHUA','2008','4','MALE'),('DANIEL','2008','5','MALE'),('EMILY','2007','1','FEMALE'),('ISABELLA','2007','2','FEMALE'),('EMMA','2007','3','FEMALE'),('AVA','2007','4','FEMALE'),('MADISON','2007','5','FEMALE'),('JASON','2007','1','MALE'),('MICHAEL','2007','2','MALE'),('ETHAN','2007','3','MALE'),('JOSHUA','2007','4','MALE'),('DANIEL','2007','5','MALE'),('EMILY','2006','1','FEMALE'),('EMMA','2006','2','FEMALE'),('MADISON','2006','3','FEMALE'),('ISABELLA','2006','4','FEMALE'),('AVA','2006','5','FEMALE'),('JACOB','2006','1','MALE'),('MICHAEL','2006','2','MALE'),('JOSHUA','2006','3','MALE'),('ETHAN','2006','4','MALE'),('MATTHEW','2006','5','MALE'),('EMILY','2005','1','FEMALE'),('EMMA','2005','2','FEMALE'),('MADISON','2005','3','FEMALE'),('ABIGAIL','2005','4','FEMALE'),('OLIVIA','2005','5','FEMALE'),('JACOB','2005','1','MALE'),('MICHAEL','2005','2','MALE'),('JOSHUA','2005','3','MALE'),('MATTHEW','2005','4','MALE'),('ETHAN','2005','5','MALE');
+/*!40000 ALTER TABLE `babynames` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cart` (
+  `username` varchar(100) NOT NULL DEFAULT '',
+  `itemid` varchar(20) NOT NULL DEFAULT '',
+  `quantity` int(11) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`username`,`itemid`),
+  KEY `itemid` (`itemid`),
+  CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`itemid`) REFERENCES `item` (`itemid`),
+  CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`username`) REFERENCES `login` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart`
+--
+
+LOCK TABLES `cart` WRITE;
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES ('harsha','3',2,'incart'),('kashyap','2',3,'incart');
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `descid`
+--
+
+DROP TABLE IF EXISTS `descid`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `descid` (
+  `itemid` varchar(20) NOT NULL DEFAULT '',
+  `config` varchar(100) DEFAULT NULL,
+  `func` varchar(100) DEFAULT NULL,
+  `req` varchar(100) DEFAULT NULL,
+  `version` varchar(20) DEFAULT NULL,
+  `link` varchar(100) DEFAULT NULL,
+  `cost` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`itemid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `descid`
+--
+
+LOCK TABLES `descid` WRITE;
+/*!40000 ALTER TABLE `descid` DISABLE KEYS */;
+INSERT INTO `descid` VALUES ('1','USB','data sharing','processor','1','http://3.bp.blogspot.com/-opuuCVa2b5M/UQbHF3MzjaI/AAAAAAAAAPI/A9efmPyQx9c/s320/pendrive-jpg.jpg','5'),('2','laptop','processing','money','1','https://d3nevzfk7ii3be.cloudfront.net/igi/l26U2XFHfkVSsGZY.standard','700'),('3','laptop','processing','money','1','https://d3nevzfk7ii3be.cloudfront.net/igi/UwfJFGoC5QuBT6bn.standard','700');
+/*!40000 ALTER TABLE `descid` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `item`
+--
+
+DROP TABLE IF EXISTS `item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `item` (
+  `category` varchar(20) DEFAULT NULL,
+  `itemid` varchar(20) NOT NULL DEFAULT '',
+  `name` varchar(100) DEFAULT NULL,
+  `cost` varchar(20) DEFAULT NULL,
+  `desc_id` varchar(20) DEFAULT NULL,
+  `availability` varchar(20) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`itemid`),
+  CONSTRAINT `item_ibfk_1` FOREIGN KEY (`itemid`) REFERENCES `descid` (`itemid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `item`
+--
+
+LOCK TABLES `item` WRITE;
+/*!40000 ALTER TABLE `item` DISABLE KEYS */;
+INSERT INTO `item` VALUES ('software','1','pendrive','5','1','10','s'),('software','2','laptop','700','2','10','s'),('software','3','laptop','700','3','10','s');
+/*!40000 ALTER TABLE `item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login` (
+  `username` varchar(100) NOT NULL DEFAULT '',
+  `password` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `login`
+--
+
+LOCK TABLES `login` WRITE;
+/*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES ('harsha','sreeharsha'),('harsha.sreevatsa','sreevatsa'),('kashyap','12345');
+/*!40000 ALTER TABLE `login` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-12-04  5:55:50
